@@ -28,7 +28,7 @@ const wss = new WebSocketServer( {
 /*🌟Conexion */
 
 wss.on('connection', function connection(ws){
-    console.log('¡Un nuevo clienter se ha conectado');
+    console.log('¡Un nuevo clienter se ha conectado!');
 
     ws.on('message', function message(data){
 
@@ -44,6 +44,12 @@ wss.on('connection', function connection(ws){
 
 
     ws.on('close', function close(){
-        console.log('disconected');
-    })
+        console.log('Saliendo de la conexion...');
+        console.log('¡Desconectado!');
+    });
+
+    wss.on('error', (error) =>{
+
+        console.error("Hubo un error al nivel puerto TCP:", error);
+    });
 })
