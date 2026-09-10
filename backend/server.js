@@ -55,7 +55,8 @@ wss.on('connection', function connection(ws){
             "TipodeAlerta": "CRITICA",
             "id_Servidor": Servidor1.id_Servidor,
             "Concepto": `El servidor ${Servidor1.nombre_nodo} ha pasado del 85% en su CPU`,
-            "Time": `${now.toLocaleDateString()} - ${now.toLocaleTimeString()} ` 
+            "Time": `${now.toLocaleDateString()} - ${now.toLocaleTimeString()} ` ,
+            "Estatus_Alerta": ""
         }
 
         const cartelito = JSON.stringify(Alerta);
@@ -73,7 +74,8 @@ wss.on('connection', function connection(ws){
             "TipodeAlerta": "CRITICA",
             "id_Servidor": Servidor1.id_Servidor,
             "Concepto": `El servidor ${Servidor1.nombre_nodo} esta fuera de linea`,
-            "Time": `${now.toLocaleDateString()} - ${now.toLocaleTimeString()} ` 
+            "Time": `${now.toLocaleDateString()} - ${now.toLocaleTimeString()} ` ,
+            "Estatus_Alerta": ""
         }
 
         const cartelito = JSON.stringify(Alerta);

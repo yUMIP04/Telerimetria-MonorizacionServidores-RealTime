@@ -10,10 +10,16 @@ import { WebsocketAdapterService } from './services/websocket-adapter.service';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+
 })
+
+
 export class AppComponent implements OnInit {
   title = 'frontend';
+
+  /*🌟 Mis Variables */
+  public alertas: any[] = [];
 
   private wsService = inject(WebsocketAdapterService);
 
@@ -23,9 +29,29 @@ export class AppComponent implements OnInit {
     this.wsService.obtenerMensajes().subscribe((mensaje) =>{
 
       console.log(`Mensaje Recibido desde el backend:`, mensaje);
+
+      console.log("📧 Agregando nuevo mesaje ...");
+      this.alertas.unshift(mensaje);
+      console.log("🥳 Nuevo mensaje guardado con exito");
+
     })
 
   
   }
+
+  
+    /*🌟 Clientes - Servidor*/
+
+    reconocerAlerta(alerta:any): void {
+
+      const payload = {
+        tipo: "Reconocer_Alerta",
+        id_Servidor: alerta.id_Servidor,
+        timestampAlerta : alerta.Time,
+        operador: 'Admin'
+      };
+
+      this.wsService.enviar(payload);
+    }
 
 }
