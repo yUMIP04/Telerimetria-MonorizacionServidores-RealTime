@@ -21,17 +21,11 @@ export class AppComponent implements OnInit {
     this.wsService.conectar();
 
     this.wsService.obtenerMensajes().subscribe((mensaje) =>{
-      console.log(`Mensaje Recibido desde el backend: ${mensaje}`);
+
+      console.log(`Mensaje Recibido desde el backend:`, mensaje);
     })
 
-    setTimeout(() =>{
-
-      this.wsService.enviar({
-        tipo:'SALUDO',
-        origen:'Angular 17',
-        mensaje: 'Hola desde el cliente'
-      });
-    }, 500)
+  
   }
 
 }
