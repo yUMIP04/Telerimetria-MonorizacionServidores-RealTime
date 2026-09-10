@@ -20,7 +20,12 @@ export class WebsocketAdapterService {
 
     this.socket.onopen = (evento) =>{
       console.log(`Conexion establecida con el servidor WebSocket`);
+
+    
+
     };
+
+   
 
     this.socket.onmessage = (evento) =>{
       try{

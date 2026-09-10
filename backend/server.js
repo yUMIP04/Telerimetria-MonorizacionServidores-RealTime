@@ -30,6 +30,35 @@ const wss = new WebSocketServer( {
 wss.on('connection', function connection(ws){
     console.log('¡Un nuevo clienter se ha conectado!');
 
+    /*🌟Datos a mandar el servidor */
+
+    const Servidor1={
+        "id_Servidor": 1,
+      "nombre_nodo": " Nodo de Prueba",
+      "Direccion IP": "198.198.05",
+      "region": " Ciudad de Mexico",
+      "estado": "Critico",
+      "CPU%": 89,
+      "Memoria_RAM %":89,
+      "Latencia_de_Red":0,
+      "Tasa de errores por minuto": 0
+    }
+
+    if (Servidor1["CPU%"] > 85){
+
+        const Alerta = {
+            "TipodeAlerta": "CRITICA",
+            "id_Servidor": Servidor1.id_Servidor,
+            "Concepto": `El servidor ${Servidor1.nombre_nodo} ha pasado del 85% en su CPU`,
+        }
+
+        const cartelito = JSON.stringify(Alerta);
+
+        ws.send(cartelito)
+    }
+
+    /* === Fin de los datos a mandar === */
+
     ws.on('message', function message(data){
 
         try{
@@ -53,3 +82,7 @@ wss.on('connection', function connection(ws){
         console.error("Hubo un error al nivel puerto TCP:", error);
     });
 })
+
+setTimeout(() =>{
+    console.log("🥳 Servidor Funcionando");
+}, 500)
