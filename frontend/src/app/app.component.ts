@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { OnInit} from '@angular/core'
+
 
 /* Servicio de webSocket */
 import { WebsocketAdapterService } from './services/websocket-adapter.service';
@@ -8,7 +9,7 @@ import { WebsocketAdapterService } from './services/websocket-adapter.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 

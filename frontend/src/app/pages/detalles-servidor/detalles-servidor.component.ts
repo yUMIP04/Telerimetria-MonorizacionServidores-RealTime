@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-detalles-servidor',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './detalles-servidor.component.html',
   styleUrl: './detalles-servidor.component.css'
 })
+
+
 export class DetallesServidorComponent {
+
+  @Input() id: string = '' ;
 
 }

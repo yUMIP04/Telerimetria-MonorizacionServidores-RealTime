@@ -191,6 +191,7 @@
       <p><strong>Fecha y Hora:</strong>{{alerta.Time}}</p>
 
       <button (click)="reconocerAlerta(alerta)">Reconocer Alerta</button>
+      <button [routerLink] ="['/servidor', alerta.id_Servidor]" >Ver detalles del Servidor</button>
 
     </div>
   } @empty{
