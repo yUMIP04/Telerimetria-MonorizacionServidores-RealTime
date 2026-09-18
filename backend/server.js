@@ -91,10 +91,34 @@ wss.on('connection', function connection(ws){
         try{
         const mensaje_txt = data.toString();
         const mensajeJson = JSON.parse(mensaje_txt);
-        console.log("Recibinedo mensaje de un cliente: ", mensajeJson);
+
+        console.log("Recibiendo mensaje de un cliente: ", mensajeJson);
+
+            const metricas = {
+                "mensaje": "METRICAS",
+                "nombre_nodo": Servidor1.nombre_nodo,
+                "Direccion IP": Servidor1["Direccion IP"],
+                "region": Servidor1.region,
+                "estado": Servidor1.estado,
+                "CPU%": Servidor1["CPU%"],
+                "Memoria_RAM %":Servidor1["Memoria_RAM %"],
+                "Latencia_de_Red":Servidor1.Latencia_de_Red,
+                "Tasa de errores por minuto": Servidor1["Tasa de errores por minuto"]
+            }
+
+            switch (mensajeJson.tipo){
+
+              case 'Suscribir_Metricas':
+                
+              const mensaje_metricas =JSON.stringify(metricas);
+
+              ws.send(mensaje_metricas);
+              break;
+            }
+        
 
         }catch(e){
-            console.error(`Hubo un error con el mensaje: `, message.error);
+            console.error(`Hubo un error con el mensaje: `, e.message);
         }
     })
 

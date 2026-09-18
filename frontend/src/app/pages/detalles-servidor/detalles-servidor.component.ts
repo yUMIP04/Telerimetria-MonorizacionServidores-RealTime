@@ -1,4 +1,4 @@
-import { Component, Input, inject, OnInit } from '@angular/core';
+import { Component, Input, inject, OnInit, numberAttribute } from '@angular/core';
 import { WebsocketAdapterService } from '../../services/websocket-adapter.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { WebsocketAdapterService } from '../../services/websocket-adapter.servic
 
 export class DetallesServidorComponent implements OnInit {
 
-  @Input() id: string = '' ;
+  @Input({ transform:numberAttribute}) id: number = 0 ;
 
   metricas : any = null;
 
@@ -32,8 +32,15 @@ export class DetallesServidorComponent implements OnInit {
 
     next: (datos) => {
 
-      this.metricas = datos;
-      
+      if (datos.tipo === 'Suscribir_Metricas' && datos.id_Servidor === this.id){
+
+        this.metricas = datos;
+
+      }
+    },
+
+    error: (err) => {
+      console.error(`Error en el flujo de WebSocket: ${err}`);
     }
 
   })
