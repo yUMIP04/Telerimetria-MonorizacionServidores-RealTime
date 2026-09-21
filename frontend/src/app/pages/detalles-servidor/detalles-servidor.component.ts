@@ -1,5 +1,6 @@
 import { Component, Input, inject, OnInit, numberAttribute, OnDestroy } from '@angular/core';
 import { WebsocketAdapterService } from '../../services/websocket-adapter.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-detalles-servidor',
@@ -16,6 +17,8 @@ export class DetallesServidorComponent implements OnInit, OnDestroy {
 
   metricas : any = null;
 
+  private Sub!: Subscription;
+
   private MiServicio = inject(WebsocketAdapterService);
 
   
@@ -30,7 +33,7 @@ export class DetallesServidorComponent implements OnInit, OnDestroy {
   this.MiServicio.enviar(Mensaje);
 
   
-  this.MiServicio.obtenerMensajes().subscribe({
+  this.Sub = this.MiServicio.obtenerMensajes().subscribe({
 
     next: (datos) => {
 
@@ -52,7 +55,18 @@ export class DetallesServidorComponent implements OnInit, OnDestroy {
   /*🌟Limpiar memoria */
 
   ngOnDestroy(): void {
+  
+    try{
+
     
+     console.log("Cerrando fugas de memoria...");
+    this.Sub.unsubscribe();
+    console.log("🌟 Listo");
+    
+  }catch(e){
+
+    console.error(`Hubo un error al cerrar la fuga de memoria: ${e}`);
+    }
   }
 
 }
