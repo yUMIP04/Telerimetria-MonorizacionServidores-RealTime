@@ -1,4 +1,4 @@
-import { Component, Input, inject, OnInit, numberAttribute } from '@angular/core';
+import { Component, Input, inject, OnInit, numberAttribute, OnDestroy } from '@angular/core';
 import { WebsocketAdapterService } from '../../services/websocket-adapter.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { WebsocketAdapterService } from '../../services/websocket-adapter.servic
 })
 
 
-export class DetallesServidorComponent implements OnInit {
+export class DetallesServidorComponent implements OnInit, OnDestroy {
 
   @Input({ transform:numberAttribute}) id: number = 0 ;
 
@@ -18,6 +18,8 @@ export class DetallesServidorComponent implements OnInit {
 
   private MiServicio = inject(WebsocketAdapterService);
 
+  
+  
   ngOnInit(): void {
 
     const Mensaje ={
@@ -45,6 +47,12 @@ export class DetallesServidorComponent implements OnInit {
 
   })
 
+  }
+
+  /*🌟Limpiar memoria */
+
+  ngOnDestroy(): void {
+    
   }
 
 }
