@@ -9,6 +9,8 @@ export class WebsocketAdapterService {
   private socket: WebSocket | null = null;
   private mensajes$ = new Subject<any>();
   private URL_conexion: string  = 'ws://localhost:8080';
+  private colaPendientes: any[] = [];
+
   constructor() {}
 
   public obtenerMensajes(): Observable<any> {
@@ -21,12 +23,13 @@ export class WebsocketAdapterService {
     this.socket.onopen = (evento) =>{
       console.log(`Conexion establecida con el servidor WebSocket`);
 
-    
-
+      while(this.colaPendientes.length > 0 ){
+        const MensajeGuardado = this.colaPendientes.shift();
+        this.socket?.send(JSON.stringify(MensajeGuardado))
+      }
     };
 
    
-
     this.socket.onmessage = (evento) =>{
       try{
 
@@ -53,10 +56,12 @@ export class WebsocketAdapterService {
 
       if(this.socket && this.socket.readyState == WebSocket.OPEN) {
         this.socket.send(JSON.stringify(datos))
+
       }else{
 
-        console.warn(`No se pudo enviar: el socket no esta conectado`);
-        
+       
+        console.warn(`Socket aun no esta listo, encolando mensaje...`);
+        this.colaPendientes.push(datos); 
       }
     }
   }
