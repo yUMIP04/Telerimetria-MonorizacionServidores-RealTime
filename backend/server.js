@@ -94,6 +94,8 @@ wss.on('connection', function connection(ws){
 
         console.log("Recibiendo mensaje de un cliente: ", mensajeJson);
 
+        const date = new Date();
+
             const metricas = {
                 "tipo": "Suscribir_Metricas",
                 "id_Servidor": mensajeJson.id_Servidor,

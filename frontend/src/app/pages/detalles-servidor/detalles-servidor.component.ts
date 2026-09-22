@@ -1,13 +1,15 @@
 import { Component, Input, inject, OnInit, numberAttribute, OnDestroy } from '@angular/core';
 import { WebsocketAdapterService } from '../../services/websocket-adapter.service';
 import { Subscription } from 'rxjs';
+import { DecimalPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detalles-servidor',
   standalone: true,
-  imports: [],
+  imports: [DecimalPipe, DatePipe],
   templateUrl: './detalles-servidor.component.html',
   styleUrl: './detalles-servidor.component.css'
+  
 })
 
 
@@ -15,13 +17,15 @@ export class DetallesServidorComponent implements OnInit, OnDestroy {
 
   @Input({ transform:numberAttribute}) id: number = 0 ;
 
+  
+
   metricas : any = null;
 
   private Sub!: Subscription;
 
   private MiServicio = inject(WebsocketAdapterService);
-
   
+  public fecha:any = new Date();
   
   ngOnInit(): void {
 

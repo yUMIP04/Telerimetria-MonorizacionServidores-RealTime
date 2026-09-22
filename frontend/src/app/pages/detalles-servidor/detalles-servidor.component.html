@@ -6,13 +6,15 @@
 
         <div>
              <strong>Region:</strong>   <p>{{metricas.region}}</p>
+             <strong>Fecha y Hora:</strong>   <p>{{fecha | date:'medium' }}</p>
                 <strong>Nombre Servidor:</strong> <p>{{metricas.nombre_nodo}}</p>
                 <strong>Direccion IP:</strong> <p>{{metricas.Direccion_IP}}</p>
                 <strong>Estado del nodo:</strong> <p>{{metricas.estado}}</p>
-                  <strong>CPU:</strong> <p>{{metricas.CPU}}</p>
+                  <strong>CPU:</strong> <p>{{ metricas.CPU | number:'1.1-1' }}</p>
                    <strong>Memoria RAM:</strong><p>{{metricas.Memoria_RAM}}</p>
                     <strong>Latencia de Red:</strong><p>{{metricas.Latencia_de_Red}}</p>
                      <strong>Tasa de errores por minuto:</strong><p>{{metricas.Tasa_de_errores_por_minuto}}</p>
+                     
 
         </div>
 
