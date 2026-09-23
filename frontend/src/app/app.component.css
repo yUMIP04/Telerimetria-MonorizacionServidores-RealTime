@@ -14,3 +14,17 @@
     color: white;
     
 }
+
+/*🌟Sidevbar */
+
+body{
+    display: flex;
+    flex-direction: row;
+}
+
+.sidevbar{
+    background-color: black;
+    color: #999999;
+    height: 100vw;
+    border-radius: 10px;
+}
