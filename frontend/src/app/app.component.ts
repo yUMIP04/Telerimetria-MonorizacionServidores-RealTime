@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 import { OnInit} from '@angular/core'
 
+/*Iconos */
+import { MatIconModule } from '@angular/material/icon';
 
 /* Servicio de webSocket */
 import { WebsocketAdapterService } from './services/websocket-adapter.service';
@@ -9,7 +11,7 @@ import { WebsocketAdapterService } from './services/websocket-adapter.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, MatIconModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 

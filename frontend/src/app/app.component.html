@@ -1,27 +1,47 @@
-<router-outlet >
+
 
   
 <header class="header">
 
   <ul class="">
     <h1>Administrador de Servidores</h1>
-    <li>ddffd</li>
   </ul>
 </header>
 
-<body>
-<nav class="sidevbar">
- <ul>
-  <li></li>
- </ul>
- 
-</nav>  
 
 <main class="main">
 
+  <nav class="sidevbar">
+ <ul class="icons-sidevbar">
+
+  <div class="icon">
+  <li> <a href=""> <mat-icon>home</mat-icon> </a> </li>
+  <li> <a href=""> Inicio </a> </li>
+  </div>
+
+  <div class="icon">
+   <li> <a href="">  <mat-icon>dns</mat-icon> </a> </li>
+  <li> <a href=""> Servidores </a></li>
+  </div>
+
+  
+  <div class="icon">
+   <li> <a href=""> <mat-icon>notifications</mat-icon> </a>  </li>
+  <li> <a href=""> Alertas </a> </li>
+  </div>
+
+  <div class="icon">
+  <li> <a href="">  <mat-icon>build</mat-icon> </a></li>
+  <li> <a href=""> Configuraciones </a> </li>
+</div> 
+</ul>
+ 
+ 
+</nav> 
   <!--🌟 Mis componentes-->
 
-
+  
+  <!--🌟 Mis Alertas-->
   @for (alerta of alertas; track alerta.Time){
     <div class="notificaciones">
 
@@ -35,9 +55,14 @@
 
     </div>
   } @empty{
+
+    <div class="notificaciones-empty">
     <p>No hay Alertas por el momento</p>
+    </div>
   }
 
+
+  <!--🌟 Servidores -->
 
 </main>
 

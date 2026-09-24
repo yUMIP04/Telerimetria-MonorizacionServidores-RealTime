@@ -4,7 +4,15 @@
     padding: 0;
     margin: 0;
     border: 0;
+    
 }
+
+main{
+    
+     background-color: #242020;
+    
+}
+
 
 .header{
     background-color: #911404;
@@ -13,18 +21,79 @@
     font-family: 'Roboto', sans-serif;
     color: white;
     
+    
 }
 
-/*🌟Sidevbar */
-
-body{
+.main{
     display: flex;
     flex-direction: row;
 }
 
+/*🌟Sidevbar */
+
+
+
 .sidevbar{
-    background-color: black;
+     background-color: #363333;
     color: #999999;
-    height: 100vw;
+    height: 50vw;
     border-radius: 10px;
+    width: 20vh;
+    
+    
+}
+
+.icons-sidevbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    row-gap: 40px;
+    position: fixed;
+
+}
+
+.icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.icon a{
+    text-decoration: none;
+     color: #999999;
+    
+}
+
+.icon a :hover{
+    color: #242020;
+     transition: color 0.3s ease-in-out;
+}
+
+/* 🌟Notificaciones */
+
+.notificaciones-empty{
+    background-color: #363333 ;
+    width: 1110px;
+    height: 110px;
+    margin-left: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.notificaciones{
+    background-color: #363333 ;
+    width: 1110px;
+    height: 110px;
+    margin-left: 10px;
+    margin-top: 20px;
+    border-radius: 10px; 
 }
