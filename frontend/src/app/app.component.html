@@ -25,8 +25,8 @@
   </div>
 
   
-  <div class="icon">
-   <li> <a href=""> <mat-icon>notifications</mat-icon> </a>  </li>
+  <div class="icon" >
+   <li> <a href="" [class.alerta] = "Notificacion"> <mat-icon>notifications</mat-icon> </a>  </li>
   <li> <a href=""> Alertas </a> </li>
   </div>
 
@@ -42,24 +42,32 @@
 
   
   <!--🌟 Mis Alertas-->
+
+  <div class="notificaciones-generales">
   @for (alerta of alertas; track alerta.Time){
     <div class="notificaciones">
 
+      <div class="info-notificaciones">
+
       <p><strong>ID:</strong>{{alerta.id_Servidor}}</p>
-      <p><strong>Tipo:</strong>{{alerta.TipodeAlerta}}</p>
-      <p><strong>Problema:</strong>{{alerta.Concepto}}</p>
-      <p><strong>Fecha y Hora:</strong>{{alerta.Time}}</p>
+      <p>{{alerta.TipodeAlerta}}</p>
+      <p>{{alerta.Concepto}}</p>
+      <p>{{alerta.Time}}</p>
 
-      <button (click)="reconocerAlerta(alerta)">Reconocer Alerta</button>
-      <button [routerLink] ="['/servidor', alerta.id_Servidor]" >Ver detalles del Servidor</button>
-
+      <div class="buttons">
+      <button (click)="reconocerAlerta(alerta)" class="Reconocer-alerta">Reconocer Alerta</button>
+      <button [routerLink] ="['/servidor', alerta.id_Servidor]" class="detalles-servidor" >Ver detalles del Servidor</button>
+</div>
+</div>
     </div>
   } @empty{
 
-    <div class="notificaciones-empty">
+    
     <p>No hay Alertas por el momento</p>
-    </div>
+   
   }
+
+  </div>
 
 
   <!--🌟 Servidores -->

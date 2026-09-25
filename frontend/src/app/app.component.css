@@ -73,6 +73,11 @@ main{
      transition: color 0.3s ease-in-out;
 }
 
+.icon .alerta{
+    color: #B30707;
+    transition: color 0.3s ease-in-out;
+}
+
 /* 🌟Notificaciones */
 
 .notificaciones-empty{
@@ -89,11 +94,72 @@ main{
     color: white;
 }
 
-.notificaciones{
+.notificaciones-generales{
     background-color: #363333 ;
     width: 1110px;
-    height: 110px;
+    height: 230px;
     margin-left: 10px;
     margin-top: 20px;
-    border-radius: 10px; 
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px ;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    color: white;
+    gap: 10px;
+
+
+}
+
+.notificaciones{
+    background-color:#706969;
+    border-radius: 10px;
+    height: 215px;
+    margin-top: 10px;
+    margin-left: 25px;
+    
+   
+}
+
+.info-notificaciones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    display: row;
+    gap: 5px;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Reconocer-alerta{
+    cursor: pointer;
+    border-radius: 3px;
+    color: white;
+    background-color: #00C255;
+}
+
+.Reconocer-alerta:hover{
+     background-color: #078C43;
+     transition: background-color  0.3s ease-in-out;
+}
+
+.detalles-servidor{
+    background-color: #B30707;
+      cursor: pointer;
+    border-radius: 3px;
+    color: white;
+}
+
+.detalles-servidor:hover{
+    background-color: #780202;
+    transition: background-color  0.3s ease-in-out;
 }

@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
   /*🌟 Mis Variables */
   public alertas: any[] = [];
 
+  public Notificacion : boolean = false;
+
   private wsService = inject(WebsocketAdapterService);
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class AppComponent implements OnInit {
 
       console.log(`Mensaje Recibido desde el backend:`, mensaje);
 
+      this.Notificacion = true;
       console.log("📧 Agregando nuevo mesaje ...");
       this.alertas.unshift(mensaje);
       console.log("🥳 Nuevo mensaje guardado con exito");
