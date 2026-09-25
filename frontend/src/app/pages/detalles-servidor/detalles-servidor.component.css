@@ -1,0 +1,13 @@
+.servidor{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.figura-MemoriaRAM{
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
