@@ -10,6 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "systeminformation": "^5.33.15"
+    "geoip-lite": "^2.0.3",
+    "systeminformation": "^5.33.15",
+    "ws": "^8.22.0"
   }
 }
