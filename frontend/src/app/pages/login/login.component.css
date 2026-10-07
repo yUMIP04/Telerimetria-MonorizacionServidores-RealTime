@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Akt:wght@100..900&family=Bebas+Neue&family=Bitcount+Prop+Single:wght@100..900&family=Bungee+Shade&family=Geist+Pixel&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 .fondo{
-    background-image: url('/assets/IMG/servidores.jpg');
+    background-image: url('/assets/IMG/servidores_img.jpg');
     width: 100vw;
     height: 100vh;
     background-repeat: no-repeat;
@@ -12,13 +12,16 @@
 .form-login{
     background-color: rgba(5, 1, 3, 0.529);
     color: white;
-    width: 25vw;
-    height: 55vh;
+    height: 420px;
+    max-height: 420px;
+    min-height: 220px;
     padding: 25px;
     overflow: hidden;
     border-radius: 10px;
    box-shadow: 0px -1px 30px 2px rgba(229, 0, 0, 0.799);
    backdrop-filter: blur(5px);
+   max-width: 385px;
+   min-width: 15px;
 }
 
 /*Titulo */
@@ -30,4 +33,36 @@
 .bx-plus-shield{
     font-size: 3.5rem;
     filter: drop-shadow(2px 4px 10px  rgba(229, 0, 0, 0.799));
+}
+
+/*componentes-formulario */
+
+.input-form{
+    margin-top: 10px;
+    border: 2px;
+    border-style: solid;
+    border-color: rgba(229, 0, 0, 0.799) ;
+    border-radius: 10px;
+    padding: 7px;
+    width: 250px;
+    margin-bottom: 10px;
+    box-shadow: 0px -1px 30px 2px rgba(229, 0, 0, 0.799);
+}
+
+.input-form:focus{
+    outline: 2px solid rgba(229, 0, 0, 0.799);
+}
+
+.btn-ingresar{
+    margin-top: 10px;
+    background-color: rgba(229, 0, 0, 0.799) ;
+    border-radius: 10px;
+    cursor: pointer;
+     box-shadow: 0px -1px 30px 2px rgba(229, 0, 0, 0.799);
+}
+
+.btn-ingresar:hover{
+     background-color: rgba(200, 15, 15, 0.799) ;
+     transition: 0.3s ease-in-out;
+
 }
