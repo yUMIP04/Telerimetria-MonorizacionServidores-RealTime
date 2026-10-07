@@ -10,7 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "dotenv": "^18.0.6",
     "geoip-lite": "^2.0.3",
+    "mongoose": "^9.11.1",
     "systeminformation": "^5.33.15",
     "ws": "^8.22.0"
   }
