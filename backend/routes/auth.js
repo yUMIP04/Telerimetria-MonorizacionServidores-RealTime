@@ -3,12 +3,13 @@ import db_connect from '../config/db.js';
 import MyModel from '../models/ModelUsers.js';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-
+import cors from 'cors';
 
 const app = express();
 await db_connect();
 
 app.use(express.json())
+app.use(cors());
 
 
 /* Prueba de Servidor */
@@ -47,7 +48,8 @@ app.post("/login", async (req, res) =>{
 
         return res.status(200).json({
             Mensaje: "Inicio de sesion exitoso",
-            usuario:user
+            usuario:user,
+            rol: usuario.rol
         })
 
     }catch(e){
@@ -64,3 +66,4 @@ app.listen(3000, () => {
 
     console.log('Servidor en http://localhost:3000');
 })
+

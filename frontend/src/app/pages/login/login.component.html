@@ -8,13 +8,13 @@
             <h1> <i class="bx bx-plus-shield" > </i>  ServerGuard</h1>
         </div>
 
-        <form action="" method="post" class="flex flex-col">
+        <form action="" (NgSubmit)="Login()" method="post" class="flex flex-col">
 
             <label for="user">Usuario:</label>
-            <input type="text" placeholder="Ingresar usuario" class="input-form" required>
+            <input type="text" [(ngModel)]="user" name="user" placeholder="Ingresar usuario" class="input-form" required>
 
             <label for="user">Contraseña:</label>
-            <input type="password" placeholder="Ingresar contraseña" class="input-form" required>
+            <input type="password" [(ngModel)]="pass" name="pass" placeholder="Ingresar contraseña" class="input-form" required>
             
            
             <a href="" class="text-right p-2">¿Olvido su contraseña?</a>
