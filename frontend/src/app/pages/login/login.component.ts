@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
 
+  private router = inject(Router);
   public user: string = '';
   public pass: string = '';
 
@@ -19,6 +20,7 @@ export class LoginComponent {
 
   try{
 
+    
  
   const API = await fetch('http://localhost:3000/login',{
 
@@ -37,13 +39,31 @@ export class LoginComponent {
 
   const respuesta = await API.json();
 
-  return respuesta;
+  if (API.ok){
+
+    console.log("Entrando al dashboard...");
+
+    if ( typeof window !== "undefined" && window.localStorage){
+
+    
+    localStorage.setItem('usuario', respuesta.usuario);
+}
+
+  this.router.navigate(['/dashboard']);
+
+  } else{
+
+    console.log("No se pudo iniciar sesion");
+    
+  }
 
  }catch(e){
 
   console.error(`No se pudo iniciar sesion: ${e}`);
 
+   
  }
+ 
 
  }
 

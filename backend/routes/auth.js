@@ -4,13 +4,15 @@ import MyModel from '../models/ModelUsers.js';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import cors from 'cors';
+import jwt from 'jsonwebtoken';
+
 
 const app = express();
 await db_connect();
 
 app.use(express.json())
 app.use(cors());
-
+const CLAVE_SECRETA = ;
 
 /* Prueba de Servidor */
 app.get("/", (req, res) =>{
