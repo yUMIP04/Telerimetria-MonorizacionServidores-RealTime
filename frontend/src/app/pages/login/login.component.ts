@@ -47,6 +47,7 @@ export class LoginComponent {
 
     
     localStorage.setItem('usuario', respuesta.usuario);
+    localStorage.setItem('token', respuesta.token);
 }
 
   this.router.navigate(['/dashboard']);
@@ -63,9 +64,5 @@ export class LoginComponent {
 
    
  }
- 
-
  }
-
-
 }

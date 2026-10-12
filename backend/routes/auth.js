@@ -4,15 +4,16 @@ import MyModel from '../models/ModelUsers.js';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import cors from 'cors';
-import jwt from 'jsonwebtoken';
+import { Crear_Token } from '../middleware/token.js';
 
 
 const app = express();
 await db_connect();
 
+
 app.use(express.json())
 app.use(cors());
-const CLAVE_SECRETA = ;
+
 
 /* Prueba de Servidor */
 app.get("/", (req, res) =>{
@@ -30,8 +31,6 @@ app.post("/login", async (req, res) =>{
 
         const usuario = await MyModel.findOne({username:user});
 
-       
-
         if (!usuario){
 
             return res.status(404).json({
@@ -48,10 +47,13 @@ app.post("/login", async (req, res) =>{
             })
         }
 
+        const Token = Crear_Token(user, usuario.rol);
+
         return res.status(200).json({
             Mensaje: "Inicio de sesion exitoso",
             usuario:user,
-            rol: usuario.rol
+            rol: usuario.rol,
+            token: Token
         })
 
     }catch(e){
