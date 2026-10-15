@@ -2,13 +2,43 @@
     background-color: black;
 }
 
+/*Logo */
+
 .logo{
 
         color:  white;
-
 }
 
 .bx-plus-shield{
+    filter: drop-shadow(2px 4px 10px  rgba(229, 0, 0, 0.799));
+    font-size: 3.5rem;
+     color:  white;
+}
 
-    color:  white;
+.titulo-navbar{
+font-size: 2.4rem;
+text-shadow: 2px 4px 10px  rgba(229, 0, 0, 0.799) ;
+}
+
+/*Titulo Dashboard */
+
+.titulo{
+    font-size: 1.7rem;
+    width: 1070px;
+    max-width: 330px;
+    min-width: 150px;
+      display: flex;
+   flex-direction: row;
+   justify-content: left;
+}
+
+/*notificaciones,perfil, etc */
+
+.opciones{
+    gap: 10px;
+    font-size: 1.4rem;
+}
+
+.bx-bell{
+    font-size: 1.5rem;
 }
