@@ -26,14 +26,14 @@
             <li class="usuario text-3xl text-end"> <i class="bx bx-user-circle" > </i> </li>
 
             <div class="ver-usuario flex flex-col">
-                <li class="name"> Pancrasia </li>
+                <li class="name"> {{user}} </li>
         <li class="estado">En Linea</li>
             </div>
         
         </div>
 
         <div class="logout">
-            <li class=""><a href="">Cerrar Sesion</a></li>
+            <li class=""><a href="" (click)="$event.preventDefault(); Cerrar_Sesion()" >Cerrar Sesion</a></li>
         </div>
         
     </ul>
