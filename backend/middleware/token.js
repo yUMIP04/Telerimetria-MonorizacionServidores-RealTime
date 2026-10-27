@@ -17,7 +17,6 @@ function Crear_Token(usuario, rol){
     const token = jwt.sign(payload, CLAVE_SECRETA);
 
     console.log("Creando el Token de manera exitosa.");
-     console.log(token);
 
         return token;
 

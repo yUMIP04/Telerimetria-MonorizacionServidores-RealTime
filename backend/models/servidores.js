@@ -51,7 +51,7 @@ export async function ObtenerDatosServidores() {
         Servidor3 : {
             "Nombre_Nodo": "Servidor3",
             "Direccion_IP": "192.168.56.1",
-            "CPU": 14.56,
+            "CPU": 86.56,
             "Memoria_RAM": 14.81,
             "Latencia_Red(ms)": 0,
             "Tasa_errores_por_minuto": 0,
