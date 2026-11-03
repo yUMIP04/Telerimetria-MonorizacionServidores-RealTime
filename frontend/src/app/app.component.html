@@ -1,1 +1,48 @@
+
 <router-outlet />
+
+
+
+
+  <header class="header">
+
+  <ul class="">
+    <h1>Administrador de Servidores</h1>
+    <li>ddffd</li>
+  </ul>
+</header>
+
+
+<main class="main">
+
+  <!--🌟 Mis componentes-->
+
+
+  @for (alerta of alertas; track alerta.Time){
+    <div class="notificaciones">
+
+      <p><strong>ID:</strong>{{alerta.id_Servidor}}</p>
+      <p><strong>Tipo:</strong>{{alerta.TipodeAlerta}}</p>
+      <p><strong>Problema:</strong>{{alerta.Concepto}}</p>
+      <p><strong>Fecha y Hora:</strong>{{alerta.Time}}</p>
+
+      <button (click)="reconocerAlerta(alerta)">Reconocer Alerta</button>
+      <button [routerLink] ="['/servidor', alerta.id_Servidor]" >Ver detalles del Servidor</button>
+
+    </div>
+  } @empty{
+    <p>No hay Alertas por el momento</p>
+  }
+</main>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<router-outlet />
+
