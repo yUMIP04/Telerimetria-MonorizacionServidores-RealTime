@@ -1,3 +1,10 @@
 *{
     background-color: white;
 }
+
+.notificaciones-area{
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}

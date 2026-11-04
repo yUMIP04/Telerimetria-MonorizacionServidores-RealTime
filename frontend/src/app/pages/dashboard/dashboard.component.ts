@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -14,6 +15,7 @@ export class DashboardComponent implements OnInit {
 
   private ws : WebSocket | null = null ;
   public AvisoActual : any = null;
+  public AvisosList : any[] = [];
 
   ngOnInit(){
 
@@ -26,8 +28,9 @@ export class DashboardComponent implements OnInit {
         
         const datos_ws = JSON.parse(event.data);
         this.AvisoActual = datos_ws;
-        
-        console.log(this.AvisoActual);
+        this.AvisosList.push(this.AvisoActual);
+
+        console.log(this.AvisosList);
       }
 
 
