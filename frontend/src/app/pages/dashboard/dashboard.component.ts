@@ -13,6 +13,7 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 })
 export class DashboardComponent implements OnInit {
 
+  public usuario:string | null = null;
   private ws : WebSocket | null = null ;
   public AvisoActual : any = null;
   public AvisosList : any[] = [];
@@ -35,6 +36,18 @@ export class DashboardComponent implements OnInit {
 
 
     }
+  }
+
+
+  public Alerta_Resuelta() : void {
+
+    if (typeof window !== undefined){
+
+      this.usuario = localStorage.getItem('usuario');
+
+      this.ws?.send(JSON.stringify({evento: ' Alerta_Resuelta', usuario:this.usuario}));
+    }
+    
   }
   
 }

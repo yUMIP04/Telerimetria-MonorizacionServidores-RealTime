@@ -25,7 +25,20 @@
 .btns{
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
     justify-items: center;
+}
+
+.btn-Reconocida:hover{
+
+    background-color:#365b94 ;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+}
+
+.btn-Resuelta:hover{
+    background-color:#175016 ;
+    transition: 0.3s ease-out;
+    cursor: pointer;
 }
