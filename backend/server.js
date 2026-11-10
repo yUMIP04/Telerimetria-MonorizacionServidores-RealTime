@@ -1,12 +1,12 @@
 import Websocket, { WebSocketServer } from 'ws';
 import { ObtenerDatosServidores } from './models/servidores.js';
 
-const ws = new WebSocketServer({ port:8080});
+const wss = new WebSocketServer({ port:8080});
 
 
 /*Conexion Websocket */
 
-ws.on('connection', async function connection(ws) {
+wss.on('connection', async function connection(ws) {
 
     console.log('Nuevo Cliente se a conectado');
 
@@ -62,6 +62,43 @@ ws.on('connection', async function connection(ws) {
     }
 
     }, 30000);
+
+     /* Escuchando el cliente */
+
+    ws.on('message', (data) => {
+
+        const datosCliente = JSON.parse(data.toString());
+
+        if (datosCliente.evento == 'Alerta_Resuelta'){
+            console.log(datosCliente);
+
+            for(let cliente of wss.clients){
+
+                if(cliente.readyState === Websocket.OPEN){
+
+                    cliente.send(JSON.stringify(datosCliente));
+                }
+            }
+
+            clearInterval(CPU_Alerta);
+            
+        }
+
+        if(datosCliente.Mensaje == "¡Alerta reconocida! un operador ya se encuentra resolviendo el problema"){
+
+            for(let cliente of wss.clients){
+
+                if(cliente.readyState === WebSocket.OPEN){
+
+                    cliente.send(JSON.stringify(datosCliente));
+
+                }
+            }
+        }
+
+    })
+
+    /* Cierre de Conexion */
 
     ws.on('close' , () =>{
         clearInterval(CPU_Alerta);

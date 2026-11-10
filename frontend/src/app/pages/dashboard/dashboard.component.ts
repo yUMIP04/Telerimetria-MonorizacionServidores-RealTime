@@ -17,6 +17,9 @@ export class DashboardComponent implements OnInit {
   private ws : WebSocket | null = null ;
   public AvisoActual : any = null;
   public AvisosList : any[] = [];
+  public Aviso_cliente:any = null;
+  public Aviso_ClienteList: any[] = [];
+
 
   ngOnInit(){
 
@@ -34,20 +37,62 @@ export class DashboardComponent implements OnInit {
         console.log(this.AvisosList);
       }
 
+      /*Mostrar los avisos del cliente */
+
+      
+
 
     }
   }
 
+/*Alerta Resuelta- Funcion */
+  public Alerta_Resuelta(AvisoResuelto:any) : void {
 
-  public Alerta_Resuelta() : void {
-
-    if (typeof window !== undefined){
+    if (typeof window !== 'undefined'){
 
       this.usuario = localStorage.getItem('usuario');
 
-      this.ws?.send(JSON.stringify({evento: ' Alerta_Resuelta', usuario:this.usuario}));
+      const payload = {
+      evento: 'Alerta_Resuelta', 
+      usuario: this.usuario
+    };
+
+    this.ws?.send(JSON.stringify(payload));
+
+   this.AvisosList = this.AvisosList.filter(aviso => aviso !== AvisoResuelto);
     }
     
   }
   
+
+  /*Alerta Reconocida- Funcion */
+
+  public Alerta_Reconocida(alerta:any, servidor:any) : void{
+
+    if ( typeof window !== 'undefined'){
+
+      this.usuario = localStorage.getItem('usuario');
+
+      const payload = {
+        "Mensaje": "¡Alerta reconocida! un operador ya se encuentra resolviendo el problema",
+        "operador": this.usuario,
+        "Alerta": alerta,
+        "Servidor": servidor
+      }
+
+      console.log(payload);
+
+      try{
+
+        this.ws?.send(JSON.stringify(payload));
+
+      }catch(e){
+
+        console.error("Hubo un problema al enviar mensaje de Alerta Reconocida", e);
+
+      }
+
+    }
+
+  }
 }
