@@ -1,5 +1,29 @@
 <app-navbar></app-navbar>
 
+<!--Notificaciones Cliente-Servidor-->
+
+<div class="notificacion-Cliente fixed right-3 bg-[#E50000] rounded-lg ">
+
+    @for(Aviso_Cliente of Aviso_ClienteList; track Aviso_Cliente.Servidor){
+
+<div class="titulo">Nueva Notificacion</div>
+
+    <div class="body-notificacionCliente">
+
+        <p><strong>Mensaje:</strong> {{Aviso_Cliente.Mensaje}}</p>
+         <p><strong>Operador:</strong> {{Aviso_Cliente.operador}} </p>
+          <p><strong>Alerta:</strong> {{Aviso_Cliente.Alerta}} </p>
+           <p><strong>Servidor: </strong> {{Aviso_Cliente.Servidor}} </p>
+    </div>
+    }@empty{
+
+        <p>No hay notificaciones por el momento</p>
+    }
+    
+
+</div>
+
+
 <div class="dashboard-body flex flex-row">
     <app-sidebar></app-sidebar>
     
@@ -23,11 +47,14 @@
 
             <div class="btns">
                 <button class="btn-Reconocida bg-[#6896D9] p-1 text-white rounded-lg " (click)="Alerta_Reconocida(Aviso.Tipo_Alerta, Aviso.Servidor)">Reconocida</button>
-                <button class="btn-Resuelta bg-[#37A836] p-1 text-white rounded-lg" (click)="Alerta_Resuelta(Aviso)">Alerta Resuelta</button>
+                <button class="btn-Resuelta bg-[#37A836] p-1 text-white rounded-lg" (click)="Alerta_Resuelta(Aviso, Aviso.Tipo_Alerta, Aviso.Servidor)">Alerta Resuelta</button>
             </div>
 
             
  </div>
+  }@empty{
+
+    <p>No hay ningula alerta por el momento</p>
   }
         </div>
 

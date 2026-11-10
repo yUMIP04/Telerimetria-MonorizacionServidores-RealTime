@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   private ws : WebSocket | null = null ;
   public AvisoActual : any = null;
   public AvisosList : any[] = [];
+
   public Aviso_cliente:any = null;
   public Aviso_ClienteList: any[] = [];
 
@@ -34,10 +35,19 @@ export class DashboardComponent implements OnInit {
         this.AvisoActual = datos_ws;
         this.AvisosList.push(this.AvisoActual);
 
-        console.log(this.AvisosList);
-      }
+        console.log("Avisos Listas: ",this.AvisosList);
 
-      /*Mostrar los avisos del cliente */
+        /*Mostrar los avisos del cliente */
+
+        if(datos_ws.Mensaje == "¡Alerta reconocida! un operador ya se encuentra resolviendo el problema" || datos_ws.Mensaje == "Alerta_Resuelta"){
+
+          this.Aviso_cliente = datos_ws;
+          this.Aviso_ClienteList.push(this.Aviso_cliente);
+
+          console.log("Avisos Clientes: ", this.Aviso_ClienteList);
+          
+        }
+      }
 
       
 
@@ -46,15 +56,17 @@ export class DashboardComponent implements OnInit {
   }
 
 /*Alerta Resuelta- Funcion */
-  public Alerta_Resuelta(AvisoResuelto:any) : void {
+  public Alerta_Resuelta(AvisoResuelto:any, aviso:any, servidor:any) : void {
 
     if (typeof window !== 'undefined'){
 
       this.usuario = localStorage.getItem('usuario');
 
       const payload = {
-      evento: 'Alerta_Resuelta', 
-      usuario: this.usuario
+      Mensaje: 'Alerta_Resuelta', 
+      operador: this.usuario,
+       Alerta: aviso,
+       Servidor: servidor
     };
 
     this.ws?.send(JSON.stringify(payload));
@@ -74,23 +86,16 @@ export class DashboardComponent implements OnInit {
       this.usuario = localStorage.getItem('usuario');
 
       const payload = {
-        "Mensaje": "¡Alerta reconocida! un operador ya se encuentra resolviendo el problema",
-        "operador": this.usuario,
-        "Alerta": alerta,
-        "Servidor": servidor
+        Mensaje: "¡Alerta reconocida! un operador ya se encuentra resolviendo el problema",
+        operador: this.usuario,
+        Alerta: alerta,
+        Servidor: servidor
       }
 
       console.log(payload);
 
-      try{
-
         this.ws?.send(JSON.stringify(payload));
 
-      }catch(e){
-
-        console.error("Hubo un problema al enviar mensaje de Alerta Reconocida", e);
-
-      }
 
     }
 

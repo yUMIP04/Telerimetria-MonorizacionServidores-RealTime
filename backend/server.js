@@ -69,7 +69,7 @@ wss.on('connection', async function connection(ws) {
 
         const datosCliente = JSON.parse(data.toString());
 
-        if (datosCliente.evento == 'Alerta_Resuelta'){
+        if (datosCliente.Mensaje == 'Alerta_Resuelta'){
             console.log(datosCliente);
 
             for(let cliente of wss.clients){
