@@ -14,6 +14,8 @@ wss.on('connection', async function connection(ws) {
 
         const Servidor = await ObtenerDatosServidores();
 
+        ws.send(Servidor);
+
         const now = new Date();
 
           if(Servidor.Servidor1?.CPU > 85 ){

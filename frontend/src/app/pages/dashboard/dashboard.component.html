@@ -2,24 +2,29 @@
 
 <!--Notificaciones Cliente-Servidor-->
 
-<div class="notificacion-Cliente fixed right-3 bg-[#E50000] rounded-lg ">
+<!-- Contenedor fijo flotando a la derecha -->
+<div class="fixed right-3 top-20 flex flex-col gap-3 z-50">
 
-    @for(Aviso_Cliente of Aviso_ClienteList; track Aviso_Cliente.Servidor){
+    @for (Aviso_Cliente of Aviso_ClienteList; track Aviso_Cliente.Servidor) {
+        
+        <div class="bg-[#E50000] text-white rounded-sm text-sm p-3 shadow-lg w-72">
+            <div class="titulo font-bold border-b border-white/30 pb-1 mb-1">Nueva Notificación</div>
 
-<div class="titulo">Nueva Notificacion</div>
+            <div class="body-notificacionCliente space-y-1">
+                <p><strong>Mensaje:</strong> {{ Aviso_Cliente.Mensaje }}</p>
+                <p><strong>Operador:</strong> {{ Aviso_Cliente.operador }}</p>
+                <p><strong>Alerta:</strong> {{ Aviso_Cliente.Alerta }}</p>
+                <p><strong>Servidor:</strong> {{ Aviso_Cliente.Servidor }}</p>
+            </div>
+        </div>
 
-    <div class="body-notificacionCliente">
+    } @empty {
+        
+        <div class="bg-gray-800 text-white rounded-sm text-sm p-3 shadow-lg w-72">
+            <p>No hay notificaciones por el momento</p>
+        </div>
 
-        <p><strong>Mensaje:</strong> {{Aviso_Cliente.Mensaje}}</p>
-         <p><strong>Operador:</strong> {{Aviso_Cliente.operador}} </p>
-          <p><strong>Alerta:</strong> {{Aviso_Cliente.Alerta}} </p>
-           <p><strong>Servidor: </strong> {{Aviso_Cliente.Servidor}} </p>
-    </div>
-    }@empty{
-
-        <p>No hay notificaciones por el momento</p>
     }
-    
 
 </div>
 
@@ -59,6 +64,53 @@
         </div>
 
     </div>
+
+   
+
 </div>
 
 
+ <!--Servidores-->
+
+    <div class="banner-Servidores">
+
+        <div class="servidores">
+
+
+            <div class="Servidor1">
+
+                <div class="titulo-Server">
+                    <h2>Servidor</h2>
+                </div>
+
+                <div class="body-servidor">
+
+                    <div class="info-server">
+                        <p><strong>Nombre nodo:</strong></p>
+                        <p><strong>Direccion IP::</strong></p>
+                        <p><strong>Region:</strong></p>
+                        <p><strong>Estado Actual:</strong></p>
+                        <p><strong>Tasa errores por minuto:</strong></p>
+                    </div>
+
+                    <div class="porcentajes-server">
+                        <p><strong>CPU</strong></p>
+                        <hr class="CPU">
+
+                        <p><strong>Memoria RAM</strong></p>
+                        <hr class="MemoriaRAM">
+
+                        
+                        <p><strong>Latencia Red(ms)</strong></p>
+                        <hr class="LatenciaRed">
+
+                        
+                        <p><strong>Memoria RAM</strong></p>
+                        <hr class="MemoriaRAM">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

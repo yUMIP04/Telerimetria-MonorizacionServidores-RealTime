@@ -31,7 +31,10 @@ export class DashboardComponent implements OnInit {
       if(event.data){
 
         
+        
         const datos_ws = JSON.parse(event.data);
+
+        console.log(datos_ws);
         this.AvisoActual = datos_ws;
         this.AvisosList.push(this.AvisoActual);
 
@@ -42,9 +45,19 @@ export class DashboardComponent implements OnInit {
         if(datos_ws.Mensaje == "¡Alerta reconocida! un operador ya se encuentra resolviendo el problema" || datos_ws.Mensaje == "Alerta_Resuelta"){
 
           this.Aviso_cliente = datos_ws;
-          this.Aviso_ClienteList.push(this.Aviso_cliente);
+         
 
           console.log("Avisos Clientes: ", this.Aviso_ClienteList);
+
+         
+               this.Aviso_ClienteList.push(this.Aviso_cliente);
+
+               setTimeout(() => {
+
+                this.Aviso_ClienteList = this.Aviso_ClienteList.filter(item => item !== this.Aviso_cliente);
+
+               }, 2000)
+        
           
         }
       }
